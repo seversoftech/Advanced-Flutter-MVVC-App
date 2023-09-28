@@ -3,6 +3,7 @@ import 'package:advance_flutter_mvvc/presentation/login/login.dart';
 import 'package:advance_flutter_mvvc/presentation/main/main_view.dart';
 import 'package:advance_flutter_mvvc/presentation/onboarding/onboarding.dart';
 import 'package:advance_flutter_mvvc/presentation/register/register.dart';
+import 'package:advance_flutter_mvvc/presentation/resources/strings_manager.dart';
 import 'package:advance_flutter_mvvc/presentation/splash/splash.dart';
 import 'package:advance_flutter_mvvc/presentation/store_details/store_details.dart';
 import 'package:flutter/material.dart';
@@ -41,11 +42,14 @@ class RouteGenerator {
       case Routes.storeDetailsRoute:
         return MaterialPageRoute(builder: (_) => const StoreDetailsView());
       default:
-        return UnDefinedRoute();
+        return unDefinedRoute();
     }
   }
-  static Route<dynamic> UnDefinedRoute(){
-    MaterialPageRoute(builder: (_)=>Scaffold(appBar: AppBar(title: const Text('No Route Found'),),))
+
+  static Route<dynamic> unDefinedRoute() {
+    return MaterialPageRoute(
+        builder: (_) => Scaffold(
+            appBar: AppBar(title: const Text(AppStrings.noRouteFound)),
+            body: const Center(child: Text(AppStrings.noRouteFound))));
   }
 }
-

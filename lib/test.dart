@@ -1,4 +1,5 @@
 import 'package:advance_flutter_mvvc/app/app.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Text extends StatelessWidget {
@@ -9,7 +10,9 @@ class Text extends StatelessWidget {
   }
 
   void getAppState() {
-    print(MyApp.instance.appState);
+    if (kDebugMode) {
+      print(MyApp.instance.appState);
+    }
   }
 
   @override
