@@ -3,12 +3,12 @@ import '../base/baseviewmodel.dart';
 class OnBoardingViewModel extends BaseViewModel {
   @override
   void dispose() {
-    //TODO: implement dispose
+    //TODO: implement dispose...
   }
 
   @override
   void start() {
-    //TODO: implement start
+    //TODO: implement start...
   }
 }
 
