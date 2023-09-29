@@ -46,9 +46,11 @@ class _OnBoardingViewState extends State<OnBoardingView> {
         controller: _pageController,
         itemCount: _list.length,
         onPageChanged: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
+          setState(
+            () {
+              _currentIndex = index;
+            },
+          );
         },
         itemBuilder: (BuildContext context, int index) {
           return OnBoardingPage(_list[index]);
@@ -88,19 +90,25 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               width: AppSize.s20,
               child: SvgPicture.asset(ImageAssets.leftArrowIc),
             ),
-            onTap: () {},
+            onTap: () {
+              _pageController.animateToPage(_getPreviousIndex(),
+                  duration: const Duration(milliseconds: DurationConstant.d300),
+                  curve: Curves.bounceInOut);
+            },
           ),
         ),
 
         //
 
-        Row(children: [
-          for (int i = 0; i < _list.length; i++)
-            Padding(
-              padding: const EdgeInsets.all(AppPadding.p8),
-              child: _getProperCircle(i),
-            )
-        ]),
+        Row(
+          children: [
+            for (int i = 0; i < _list.length; i++)
+              Padding(
+                padding: const EdgeInsets.all(AppPadding.p8),
+                child: _getProperCircle(i),
+              )
+          ],
+        ),
 
         Padding(
           padding: const EdgeInsets.all(AppMargin.m14),
@@ -110,11 +118,31 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               width: AppSize.s20,
               child: SvgPicture.asset(ImageAssets.rightarrowIc),
             ),
-            onTap: () {},
+            onTap: () {
+              _pageController.animateToPage(_getNextIndex(),
+                  duration: const Duration(milliseconds: DurationConstant.d300),
+                  curve: Curves.bounceInOut);
+            },
           ),
         ),
       ],
     );
+  }
+
+  int _getPreviousIndex() {
+    int previousIndex = _currentIndex--;
+    if (previousIndex == -1) {
+      _currentIndex = _list.length - 1;
+    }
+    return _currentIndex;
+  }
+
+  int _getNextIndex() {
+    int nextIndex = _currentIndex++;
+    if (nextIndex >= _list.length) {
+      _currentIndex = 0;
+    }
+    return _currentIndex;
   }
 
   Widget _getProperCircle(int index) {
