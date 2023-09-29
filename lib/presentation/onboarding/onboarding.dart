@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../resources/routes_manager.dart';
 import '../resources/values_manager.dart';
 
 class OnBoardingView extends StatefulWidget {
@@ -37,7 +38,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       backgroundColor: ColorManager.white,
       appBar: AppBar(
           backgroundColor: ColorManager.white,
-          elevation: AppSize.s1_5,
+          elevation: AppSize.s0,
           systemOverlayStyle: SystemUiOverlayStyle(
               statusBarColor: ColorManager.white,
               statusBarBrightness: Brightness.dark,
@@ -64,9 +65,12 @@ class _OnBoardingViewState extends State<OnBoardingView> {
             Align(
               alignment: Alignment.centerRight,
               child: TextButton(
-                onPressed: () {},
-                child: const Text(
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, Routes.loginRoute);
+                },
+                child: Text(
                   AppStrings.skip,
+                  style: Theme.of(context).textTheme.titleSmall,
                   textAlign: TextAlign.end,
                 ),
               ),
@@ -79,53 +83,58 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   }
 
   Widget _getBottomSheetWidget() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(AppMargin.m14),
-          child: GestureDetector(
-            child: SizedBox(
-              height: AppSize.s20,
-              width: AppSize.s20,
-              child: SvgPicture.asset(ImageAssets.leftArrowIc),
+    return Container(
+      color: ColorManager.primary,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(AppMargin.m14),
+            child: GestureDetector(
+              child: SizedBox(
+                height: AppSize.s20,
+                width: AppSize.s20,
+                child: SvgPicture.asset(ImageAssets.leftArrowIc),
+              ),
+              onTap: () {
+                _pageController.animateToPage(_getPreviousIndex(),
+                    duration:
+                        const Duration(milliseconds: DurationConstant.d300),
+                    curve: Curves.bounceInOut);
+              },
             ),
-            onTap: () {
-              _pageController.animateToPage(_getPreviousIndex(),
-                  duration: const Duration(milliseconds: DurationConstant.d300),
-                  curve: Curves.bounceInOut);
-            },
           ),
-        ),
 
-        //
+          //
 
-        Row(
-          children: [
-            for (int i = 0; i < _list.length; i++)
-              Padding(
-                padding: const EdgeInsets.all(AppPadding.p8),
-                child: _getProperCircle(i),
-              )
-          ],
-        ),
+          Row(
+            children: [
+              for (int i = 0; i < _list.length; i++)
+                Padding(
+                  padding: const EdgeInsets.all(AppPadding.p8),
+                  child: _getProperCircle(i),
+                )
+            ],
+          ),
 
-        Padding(
-          padding: const EdgeInsets.all(AppMargin.m14),
-          child: GestureDetector(
-            child: SizedBox(
-              height: AppSize.s20,
-              width: AppSize.s20,
-              child: SvgPicture.asset(ImageAssets.rightarrowIc),
+          Padding(
+            padding: const EdgeInsets.all(AppMargin.m14),
+            child: GestureDetector(
+              child: SizedBox(
+                height: AppSize.s20,
+                width: AppSize.s20,
+                child: SvgPicture.asset(ImageAssets.rightarrowIc),
+              ),
+              onTap: () {
+                _pageController.animateToPage(_getNextIndex(),
+                    duration:
+                        const Duration(milliseconds: DurationConstant.d300),
+                    curve: Curves.bounceInOut);
+              },
             ),
-            onTap: () {
-              _pageController.animateToPage(_getNextIndex(),
-                  duration: const Duration(milliseconds: DurationConstant.d300),
-                  curve: Curves.bounceInOut);
-            },
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

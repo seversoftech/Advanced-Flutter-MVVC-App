@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import 'color_manager.dart';
@@ -21,7 +20,7 @@ ThemeData getApplicationTheme() {
     cardTheme: CardTheme(
         color: ColorManager.white,
         shadowColor: ColorManager.grey,
-        elevation: AppSize.s4), 
+        elevation: AppSize.s4),
 // appbar theme
     appBarTheme: AppBarTheme(
       centerTitle: true,
@@ -50,8 +49,10 @@ ThemeData getApplicationTheme() {
     textTheme: TextTheme(
         displayLarge:
             getBoldStyle(color: ColorManager.darkGrey, fontSize: FontSize.s16),
-        titleMedium: getMediumStyle(
-            color: ColorManager.lightGrey, fontSize: FontSize.s14),
+        titleMedium:
+            getMediumStyle(color: ColorManager.primary, fontSize: FontSize.s14),
+        titleSmall:
+            getMediumStyle(color: ColorManager.primary, fontSize: FontSize.s14),
         bodySmall: getRegularStyle(color: ColorManager.grey1),
         bodyLarge: getRegularStyle(color: ColorManager.grey)),
 
@@ -62,12 +63,12 @@ ThemeData getApplicationTheme() {
       hintStyle: getRegularStyle(color: ColorManager.grey1),
       labelStyle: getMediumStyle(color: ColorManager.darkGrey),
       errorStyle: getRegularStyle(color: ColorManager.error),
-      focusedErrorBorder:OutlineInputBorder(
+      focusedErrorBorder: OutlineInputBorder(
         borderSide: BorderSide(color: ColorManager.error, width: AppSize.s1_5),
         borderRadius: const BorderRadius.all(
           Radius.circular(AppMargin.m8),
         ),
-      ) ,
+      ),
       errorBorder: OutlineInputBorder(
         borderSide: BorderSide(color: ColorManager.error, width: AppSize.s1_5),
         borderRadius: const BorderRadius.all(
