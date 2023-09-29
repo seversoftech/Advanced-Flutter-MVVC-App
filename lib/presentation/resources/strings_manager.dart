@@ -13,4 +13,6 @@ class AppStrings {
       'Awesome flutter Application demostrating clean architechtute #3';
   static const String onBoardingSubTile4 =
       'Awesome flutter Application demostrating clean architechtute #4';
+
+  static const String skip = 'Skip';
 }

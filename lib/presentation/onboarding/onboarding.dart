@@ -3,6 +3,7 @@ import 'package:advance_flutter_mvvc/presentation/resources/color_manager.dart';
 import 'package:advance_flutter_mvvc/presentation/resources/strings_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../resources/values_manager.dart';
 
@@ -35,6 +36,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     return Scaffold(
       backgroundColor: ColorManager.white,
       appBar: AppBar(
+          backgroundColor: ColorManager.white,
           elevation: AppSize.s1_5,
           systemOverlayStyle: SystemUiOverlayStyle(
               statusBarColor: ColorManager.white,
@@ -49,15 +51,83 @@ class _OnBoardingViewState extends State<OnBoardingView> {
           });
         },
         itemBuilder: (BuildContext context, int index) {
-          return null;
+          return OnBoardingPage(_list[index]);
         },
       ),
+      bottomSheet: Container(
+        color: ColorManager.white,
+        height: AppSize.s100,
+        child: Column(
+          children: [
+            Align(
+              alignment: Alignment.centerRight,
+              child: TextButton(
+                onPressed: () {},
+                child: const Text(
+                  AppStrings.skip,
+                  textAlign: TextAlign.end,
+                ),
+              ),
+            ),
+            _getBottomSheetWidget(),
+          ],
+        ),
+      ),
     );
+  }
+
+  Widget _getBottomSheetWidget() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(AppMargin.m14),
+          child: GestureDetector(
+            child: SizedBox(
+              height: AppSize.s20,
+              width: AppSize.s20,
+              child: SvgPicture.asset(ImageAssets.leftArrowIc),
+            ),
+            onTap: () {},
+          ),
+        ),
+
+        //
+
+        Row(children: [
+          for (int i = 0; i < _list.length; i++)
+            Padding(
+              padding: const EdgeInsets.all(AppPadding.p8),
+              child: _getProperCircle(i),
+            )
+        ]),
+
+        Padding(
+          padding: const EdgeInsets.all(AppMargin.m14),
+          child: GestureDetector(
+            child: SizedBox(
+              height: AppSize.s20,
+              width: AppSize.s20,
+              child: SvgPicture.asset(ImageAssets.rightarrowIc),
+            ),
+            onTap: () {},
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _getProperCircle(int index) {
+    if (index == _currentIndex) {
+      return SvgPicture.asset(ImageAssets.hollowCircleIc);
+    } else {
+      return SvgPicture.asset(ImageAssets.solidCircleIc);
+    }
   }
 }
 
 class OnBoardingPage extends StatelessWidget {
-  SliderObject _sliderObject;
+  final SliderObject _sliderObject;
   OnBoardingPage(this._sliderObject, {super.key});
 
   @override
@@ -73,7 +143,8 @@ class OnBoardingPage extends StatelessWidget {
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.displayLarge,
           ),
-        ), Padding(
+        ),
+        Padding(
           padding: const EdgeInsets.all(AppPadding.p8),
           child: Text(
             _sliderObject.subTitle,
@@ -81,7 +152,8 @@ class OnBoardingPage extends StatelessWidget {
             style: Theme.of(context).textTheme.titleMedium,
           ),
         ),
-        const SizedBox(height: AppSize.s60)
+        const SizedBox(height: AppSize.s60),
+        SvgPicture.asset(_sliderObject.image)
       ],
     );
   }
