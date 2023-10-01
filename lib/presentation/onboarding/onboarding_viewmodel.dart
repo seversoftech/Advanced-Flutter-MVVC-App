@@ -1,6 +1,7 @@
 import '../base/baseviewmodel.dart';
 
-class OnBoardingViewModel extends BaseViewModel {
+class OnBoardingViewModel extends BaseViewModel
+    with OnBoardingViewModelInputs, OnBoardingViewModelOutputs {
   @override
   void dispose() {
     //TODO: implement dispose...
@@ -10,17 +11,17 @@ class OnBoardingViewModel extends BaseViewModel {
   void start() {
     //TODO: implement start...
   }
-  
+
   @override
   void goNext() {
     // TODO: implement goNext
   }
-  
+
   @override
   void goPrevious() {
     // TODO: implement goPrevious
   }
-  
+
   @override
   void onPageChange(int index) {
     // TODO: implement onPageChange
@@ -28,10 +29,10 @@ class OnBoardingViewModel extends BaseViewModel {
 }
 
 //
-abstract class OnBoardingViewModelInputs {
+mixin OnBoardingViewModelInputs {
   void goNext();
   void goPrevious();
   void onPageChange(int index);
 }
 
-abstract class OnBoardingViewModelOutputs {}
+mixin OnBoardingViewModelOutputs {}
