@@ -10,11 +10,28 @@ class OnBoardingViewModel extends BaseViewModel {
   void start() {
     //TODO: implement start...
   }
+  
+  @override
+  void goNext() {
+    // TODO: implement goNext
+  }
+  
+  @override
+  void goPrevious() {
+    // TODO: implement goPrevious
+  }
+  
+  @override
+  void onPageChange(int index) {
+    // TODO: implement onPageChange
+  }
 }
 
 //
 abstract class OnBoardingViewModelInputs {
   void goNext();
+  void goPrevious();
+  void onPageChange(int index);
 }
 
 abstract class OnBoardingViewModelOutputs {}
