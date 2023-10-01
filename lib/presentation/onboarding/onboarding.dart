@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../domain/model.dart';
 import '../resources/routes_manager.dart';
 import '../resources/values_manager.dart';
 
@@ -196,10 +197,4 @@ class OnBoardingPage extends StatelessWidget {
   }
 }
 
-class SliderObject {
-  String title;
-  String subTitle;
-  String image;
 
-  SliderObject(this.title, this.subTitle, this.image);
-}

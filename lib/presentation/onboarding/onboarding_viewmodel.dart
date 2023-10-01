@@ -1,7 +1,12 @@
+import 'dart:async';
+
 import '../base/baseviewmodel.dart';
 
 class OnBoardingViewModel extends BaseViewModel
     with OnBoardingViewModelInputs, OnBoardingViewModelOutputs {
+  final StreamController _streamController =
+      StreamController<SliderViewObject>();
+
   @override
   void dispose() {
     //TODO: implement dispose...
@@ -36,3 +41,11 @@ mixin OnBoardingViewModelInputs {
 }
 
 mixin OnBoardingViewModelOutputs {}
+
+class SliderViewObject {
+  SliderViewObject sliderViewObject;
+  int numOfSlides;
+  int currentIndex;
+
+  SliderViewObject(this.sliderViewObject, this.numOfSlides, this.currentIndex);
+}
