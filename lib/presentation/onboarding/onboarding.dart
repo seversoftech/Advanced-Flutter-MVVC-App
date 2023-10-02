@@ -17,21 +17,12 @@ class OnBoardingView extends StatefulWidget {
 }
 
 class _OnBoardingViewState extends State<OnBoardingView> {
-  late final List<SliderObject> _list = _getSliderObject();
+
 
   final PageController _pageController = PageController(initialPage: 0);
-  int _currentIndex = 0;
 
-  List<SliderObject> _getSliderObject() => [
-        SliderObject(AppStrings.onBoardingTile1, AppStrings.onBoardingSubTile1,
-            ImageAssets.onBoardingLogo1),
-        SliderObject(AppStrings.onBoardingTile2, AppStrings.onBoardingSubTile2,
-            ImageAssets.onBoardingLogo2),
-        SliderObject(AppStrings.onBoardingTile3, AppStrings.onBoardingSubTile3,
-            ImageAssets.onBoardingLogo3),
-        SliderObject(AppStrings.onBoardingTile4, AppStrings.onBoardingSubTile4,
-            ImageAssets.onBoardingLogo4),
-      ];
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -140,19 +131,10 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   }
 
   int _getPreviousIndex() {
-    int previousIndex = _currentIndex--;
-    if (previousIndex == -1) {
-      _currentIndex = _list.length - 1;
-    }
-    return _currentIndex;
-  }
+ 
 
   int _getNextIndex() {
-    int nextIndex = _currentIndex++;
-    if (nextIndex >= _list.length) {
-      _currentIndex = 0;
-    }
-    return _currentIndex;
+  
   }
 
   Widget _getProperCircle(int index) {
@@ -161,6 +143,11 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     } else {
       return SvgPicture.asset(ImageAssets.solidCircleIc);
     }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 }
 
@@ -196,5 +183,3 @@ class OnBoardingPage extends StatelessWidget {
     );
   }
 }
-
-
