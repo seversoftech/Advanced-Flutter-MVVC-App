@@ -144,8 +144,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     );
   }
 
-  Widget _getProperCircle(int index, int _currentIndex) {
-    if (index == _currentIndex) {
+  Widget _getProperCircle(int index, int currentIndex) {
+    if (index == currentIndex) {
       return SvgPicture.asset(ImageAssets.hollowCircleIc);
     } else {
       return SvgPicture.asset(ImageAssets.solidCircleIc);
@@ -161,7 +161,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
 
 class OnBoardingPage extends StatelessWidget {
   final SliderObject _sliderObject;
-  OnBoardingPage(this._sliderObject, {super.key});
+  const OnBoardingPage(this._sliderObject, {super.key});
 
   @override
   Widget build(BuildContext context) {

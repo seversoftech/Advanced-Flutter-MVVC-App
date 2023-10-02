@@ -13,12 +13,10 @@ class OnBoardingViewModel extends BaseViewModel
   late List<SliderObject> _list;
   int _currentIndex = 0;
 
-  @override
   void dispose() {
     _streamController.close();
   }
 
-  @override
   void start() {
     _list = _getSliderData();
     _postDataToView();
@@ -50,11 +48,11 @@ class OnBoardingViewModel extends BaseViewModel
   }
 
   @override
-  // TODO: implement inputSliderViewObject
+ 
   Sink get inputSliderViewObject => _streamController.sink;
 
   @override
-  // TODO: implement outputSliderViewObject
+
   Stream<SliderViewObject> get outputSliderViewObject =>
       _streamController.stream.map((sliderViewObject) => sliderViewObject);
 
