@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import '../presentation/resources/theme_manager.dart';
 
 class MyApp extends StatefulWidget {
-  MyApp._internal(); //private named contructor
+  MyApp._internal(); 
   int appState = 0;
 
   static final MyApp instance = MyApp
-      ._internal(); // single instance -- singleton because it is static final and cannot be chnaged
+      ._internal(); // single instance --  singleton because it is static final and cannot be chnaged
 
   factory MyApp() => instance; // factory for the clas instance
 
