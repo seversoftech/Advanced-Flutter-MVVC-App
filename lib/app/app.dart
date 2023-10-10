@@ -8,10 +8,9 @@ class MyApp extends StatefulWidget {
   int appState = 0;
 
   static final MyApp instance = MyApp
-      ._internal(); // single instance --  singleton because it is static final and cannot be chnaged
+      ._internal(); 
 
-  factory MyApp() => instance; // factory for the clas instance
-
+  factory MyApp() => instance; 
   @override
   State<MyApp> createState() => _MyAppState();
 }
